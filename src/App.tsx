@@ -14,8 +14,12 @@ const Container = styled.div`
   gap: 30px;
   width: fit-content;
   border-radius: 20px;
-  background: hsl(249, 41%, 33%);
-  box-shadow: 0 0 50px hsl(248, 68%, 14.7%);
+  background: linear-gradient(
+    135deg,
+    hsl(230, 84%, 58%) 0%,
+    hsl(230, 84%, 38%) 90%
+  );
+  box-shadow: 0 0 12px hsl(248, 68%, 14.7%) inset;
 `;
 
 function App() {

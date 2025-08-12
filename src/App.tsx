@@ -4,17 +4,25 @@ import { PAIRS } from "./constants";
 import { Ticker24hInfo } from "./components/Ticker24hInfo";
 import { TradesTable } from "./components/TradesTable";
 import { Selector } from "./components/Selector";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+`;
 
 function App() {
   const [pair, setPair] = useState<PAIRS>(PAIRS.BTCUSDT);
   return (
-    <div>
-      <Selector value={pair} onChange={setPair} />
-      <h2>{pair}</h2>
-      <TickerInfo pair={pair} />
-      <Ticker24hInfo pair={pair} />
-      <TradesTable pair={pair} />
-    </div>
+    <Container>
+      <div>
+        <Selector value={pair} onChange={setPair} />
+        <TickerInfo pair={pair} />
+        <Ticker24hInfo pair={pair} />
+      </div>
+      <div>
+        <TradesTable pair={pair} />
+      </div>
+    </Container>
   );
 }
 

@@ -1,4 +1,9 @@
+import styled from "styled-components";
 import { PAIRS } from "../constants";
+
+const Select = styled.select`
+  font-size: 15px;
+`;
 
 export function Selector<T>({
   value,
@@ -9,7 +14,7 @@ export function Selector<T>({
 }) {
   const pairs = Object.values(PAIRS);
   return (
-    <select
+    <Select
       value={value as string}
       onChange={(e) => onChange(e.target.value as T)}
     >
@@ -18,6 +23,6 @@ export function Selector<T>({
           {pair}
         </option>
       ))}
-    </select>
+    </Select>
   );
 }

@@ -5,4 +5,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: hsl(249, 54%, 26%);
+  display: flex;
+  justify-content: center;
+  color: hsl(249, 29.03%, 84.29%);
+}
+
+h1,
+h2 {
+  color: hsl(44.83, 100%, 50%);
 }

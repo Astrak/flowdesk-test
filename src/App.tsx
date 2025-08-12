@@ -8,8 +8,14 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
   align-items: end;
+  margin: 50px;
+  padding: 30px;
+  gap: 30px;
+  width: fit-content;
+  border-radius: 20px;
+  background: hsl(249, 41%, 33%);
+  box-shadow: 0 0 50px hsl(248, 68%, 14.7%);
 `;
 
 function App() {

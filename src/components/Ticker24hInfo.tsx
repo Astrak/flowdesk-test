@@ -3,9 +3,7 @@ import { useTicker24 } from "../utils/queries";
 import styled from "styled-components";
 import { type TTicker24 } from "../utils/types";
 
-const InfoTable = styled.table`
-  background: #aaa;
-`;
+const InfoTable = styled.table``;
 
 const DataRow = ({ tag, data }: { tag: string; data: string | number }) => {
   return (

@@ -1,5 +1,3 @@
-import "./App.css";
-
 import styled from "styled-components";
 
 const Button = styled.button``;
@@ -7,9 +5,7 @@ const Button = styled.button``;
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Button>Button</Button>
-      </header>
+      <Button>Button</Button>
     </div>
   );
 }

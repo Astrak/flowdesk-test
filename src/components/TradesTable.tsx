@@ -6,15 +6,15 @@ import { useState } from "react";
 
 const Table = styled.table``;
 
-const HeadingTd = ({ tag, sort }: { tag: keyof TTrade; sort?: () => void }) => (
-  <td
+const HeadingTh = ({ tag, sort }: { tag: keyof TTrade; sort?: () => void }) => (
+  <th
     onClick={sort}
     style={{
       cursor: ["time", "qty", "price"].includes(tag) ? "pointer" : "default",
     }}
   >
     {tag}
-  </td>
+  </th>
 );
 
 const TradeRow = ({ trade }: { trade: TTrade }) => (
@@ -55,22 +55,24 @@ export function TradesTable({ pair }: { pair: PAIRS }) {
       {sortedTrades && (
         <Table>
           <thead>
-            {(TradeKeys as Array<keyof TTrade>).map((keyName, i) => {
-              switch (keyName) {
-                case "price":
-                case "time":
-                case "qty":
-                  return (
-                    <HeadingTd
-                      key={i}
-                      tag={keyName}
-                      sort={() => handleSort(keyName)}
-                    />
-                  );
-                default:
-                  return <HeadingTd key={i} tag={keyName} />;
-              }
-            })}
+            <tr>
+              {(TradeKeys as Array<keyof TTrade>).map((keyName, i) => {
+                switch (keyName) {
+                  case "price":
+                  case "time":
+                  case "qty":
+                    return (
+                      <HeadingTh
+                        key={i}
+                        tag={keyName}
+                        sort={() => handleSort(keyName)}
+                      />
+                    );
+                  default:
+                    return <HeadingTh key={i} tag={keyName} />;
+                }
+              })}
+            </tr>
           </thead>
           <tbody>
             {sortedTrades.map((trade, i) => (

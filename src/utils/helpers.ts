@@ -17,7 +17,11 @@ export function createHookFor<T>(
         try {
           assertFn(result.data);
         } catch (e) {
-          console.error("Data received do not match schema");
+          console.error(e);
+          console.error(
+            `Data received do not match schema: called ${endpoint}${pair}, received:`,
+            result.data
+          );
         }
         return result.data;
       },

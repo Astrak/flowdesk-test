@@ -27,24 +27,29 @@ const HeadingTh = ({
   sort?: () => void;
   isSorting?: boolean;
   isAsc?: boolean;
-}) => (
-  <th
-    onClick={sort}
-    style={{
-      cursor: ["time", "qty", "price"].includes(tag) ? "pointer" : "default",
-      position: "relative",
-    }}
-  >
-    {tag}
-    {isSorting && (
-      <SortingArrow
-        style={{
-          transform: `rotate(${isAsc ? "135" : "-45"}deg)`,
-        }}
-      />
-    )}
-  </th>
-);
+}) => {
+  if (["id", "isBuyerMaker", "isBestMatch"].includes(tag)) {
+    return null;
+  }
+  return (
+    <th
+      onClick={sort}
+      style={{
+        cursor: ["time", "qty", "price"].includes(tag) ? "pointer" : "default",
+        position: "relative",
+      }}
+    >
+      {tag}
+      {isSorting && (
+        <SortingArrow
+          style={{
+            transform: `rotate(${isAsc ? "135" : "-45"}deg)`,
+          }}
+        />
+      )}
+    </th>
+  );
+};
 
 const TradeRow = ({ trade }: { trade: TTrade }) => (
   <tr>
@@ -54,6 +59,10 @@ const TradeRow = ({ trade }: { trade: TTrade }) => (
           return <td key={i}>{toCET(trade.time)}</td>;
         case "price":
           return <td key={i}>{Number(trade.price).toLocaleString("en-US")}</td>;
+        case "id":
+        case "isBuyerMaker":
+        case "isBestMatch":
+          return null;
         default:
           return <td key={i}>{trade[keyName]}</td>;
       }
@@ -86,7 +95,7 @@ export function TradesTable({ pair }: { pair: PAIRS }) {
   };
   return (
     <div>
-      <h2>Trades</h2>
+      <h2 style={{ textAlign: "right" }}>Trades</h2>
       {isLoading && <p>Loading...</p>}
       {sortedTrades && (
         <Table>

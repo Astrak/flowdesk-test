@@ -9,7 +9,7 @@ const DataRow = ({ tag, data }: { tag: string; data: string | number }) => {
   return (
     <tr>
       <td>{tag}</td>
-      <td>{data}</td>
+      <td style={{ textAlign: "right" }}>{data}</td>
     </tr>
   );
 };

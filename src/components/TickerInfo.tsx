@@ -9,7 +9,7 @@ export function TickerInfo({ pair }: { pair: PAIRS }) {
   return (
     <InfoBox>
       {isLoading && <p>Loading...</p>}
-      <h1>Price: ${ticker && Number(ticker?.price).toLocaleString("en-US")}</h1>
+      <h1>Price: {ticker && Number(ticker?.price).toLocaleString("en-US")}</h1>
     </InfoBox>
   );
 }

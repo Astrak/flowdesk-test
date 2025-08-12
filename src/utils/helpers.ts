@@ -28,3 +28,15 @@ export function createHookFor<T>(
     });
   })(pair);
 }
+
+export function toCET(timestamp: number) {
+  return new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Berlin",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(new Date(timestamp));
+}
+
+// Example: current timestamp
+console.log(toCET(Date.now()));

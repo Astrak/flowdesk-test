@@ -1,13 +1,13 @@
-import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { TickerInfo } from "./components/TickerInfo";
-
-const queryClient = new QueryClient();
+import { useState } from "react";
+import { PAIRS } from "./constants";
 
 function App() {
+  const [pair, setPair] = useState<PAIRS>(PAIRS.BTCUSDT);
   return (
-    <QueryClientProvider client={queryClient}>
-      <TickerInfo />
-    </QueryClientProvider>
+    <div>
+      <TickerInfo pair={pair} />
+    </div>
   );
 }
 

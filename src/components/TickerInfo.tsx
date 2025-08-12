@@ -1,7 +1,15 @@
 import { PAIRS } from "../constants";
-import { useTicker24 } from "../utils/queries";
+import { useTicker } from "../utils/queries";
+import styled from "styled-components";
 
-export function TickerInfo() {
-  const { data: result } = useTicker24(PAIRS.AAVEUSDT);
-  return <p>{result?.quoteVolume}</p>;
+const InfoBox = styled.div``;
+
+export function TickerInfo({ pair }: { pair: PAIRS }) {
+  const { data: ticker } = useTicker(pair);
+  return (
+    <InfoBox>
+      <h2>{ticker?.symbol}</h2>
+      <p>Price: {ticker?.price}</p>
+    </InfoBox>
+  );
 }

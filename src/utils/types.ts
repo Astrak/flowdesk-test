@@ -47,6 +47,11 @@ export const TradeKeys = Object.keys(Trade.shape);
 
 export type TTrade = z.infer<typeof Trade>;
 
+export type SortingKeys = Extract<
+  keyof typeof Trade.shape,
+  "time" | "qty" | "price"
+>;
+
 export const Trades = z.array(Trade);
 
 export type TTrades = z.infer<typeof Trades>;

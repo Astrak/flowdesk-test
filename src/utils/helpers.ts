@@ -4,16 +4,23 @@ import axios from "axios";
 
 export function createHookFor<T>(
   endpoint: BINANCE_API_ENDPOINTS,
-  pair: string
+  pair: string,
+  assertFn: (parsedResult: T) => {}
 ) {
   return (function (pair) {
     return useQuery({
       queryKey: [endpoint, pair],
-      queryFn: async (pair): Promise<T> => {
-        const result = await axios.get(endpoint + pair);
+      queryFn: async (): Promise<T> => {
+        const result = await axios.get(`${endpoint}${pair}`, {
+          headers: { Accept: "application/json" },
+        });
+        try {
+          assertFn(result.data);
+        } catch (e) {
+          console.error("Data received do not match schema");
+        }
         return result.data;
       },
-      refetchInterval: 10,
     });
   })(pair);
 }

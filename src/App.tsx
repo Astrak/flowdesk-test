@@ -1,12 +1,13 @@
-import styled from "styled-components";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import { TickerInfo } from "./components/TickerInfo";
 
-const Button = styled.button``;
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <Button>Button</Button>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <TickerInfo />
+    </QueryClientProvider>
   );
 }
 

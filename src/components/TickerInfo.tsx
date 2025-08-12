@@ -8,8 +8,7 @@ export function TickerInfo({ pair }: { pair: PAIRS }) {
   const { data: ticker } = useTicker(pair);
   return (
     <InfoBox>
-      <h2>{ticker?.symbol}</h2>
-      <p>Price: {ticker?.price}</p>
+      <h1>Price: {ticker?.price}</h1>
     </InfoBox>
   );
 }

@@ -33,16 +33,20 @@ export const Ticker24 = z.object({
 
 export type TTicker24 = z.infer<typeof Ticker24>;
 
-export const Trades = z.array(
-  z.object({
-    id: z.number(),
-    price: z.string(),
-    qty: z.string(),
-    quoteQty: z.string(),
-    time: z.number(),
-    isBuyerMaker: z.boolean(),
-    isBestMatch: z.boolean(),
-  })
-);
+export const Trade = z.object({
+  id: z.number(),
+  price: z.string(),
+  qty: z.string(),
+  quoteQty: z.string(),
+  time: z.number(),
+  isBuyerMaker: z.boolean(),
+  isBestMatch: z.boolean(),
+});
+
+export const TradeKeys = Object.keys(Trade.shape);
+
+export type TTrade = z.infer<typeof Trade>;
+
+export const Trades = z.array(Trade);
 
 export type TTrades = z.infer<typeof Trades>;
